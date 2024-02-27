@@ -9,7 +9,6 @@ proxies = {
 }  # change proxy to None if working from local
 
 
-# @functions_framework.http
 def get_kadencijos_xml():
     response = requests.get(url=url, proxies=proxies)
     return response.text
