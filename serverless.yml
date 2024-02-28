@@ -1,0 +1,24 @@
+service: voting2024
+
+provider:
+  name: google
+  runtime: python312
+  project: voting2024
+  credentials: ~/.config/gcloud/voting_application_credentials.json
+  timeout: 540s
+  memorySize: 1024
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - '**/*'
+    - '!main.py'
+    - '!requirements.txt'
+
+functions:
+  scraper:
+    handler: get_data
+    events:
+      - http: path
